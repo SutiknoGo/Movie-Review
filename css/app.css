@@ -1,0 +1,180 @@
+#page{
+    background-color: #f9f9f9;
+}
+
+.ui-bar-a{
+    background-color: #f9f9f9;
+    border-color: #f9f9f9;
+}
+
+.judul-block{
+    background-color: #f9f9f9;
+    border-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.tag-block{
+    background-color: #f9f9f9;
+    border-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.main-block{
+    width: 50%;
+}
+
+.poster-block{
+    width: 50%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail-block{
+    width: 50%;
+    /* margin-left: 2%; */
+}
+
+.image-block{
+    background-color: #f9f9f9;
+    border-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poster{
+    height: 70%;
+    width: 70%;
+}
+
+.judul-detail{
+    font-size: 17pt;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    margin-top: 2%;
+}
+
+.tag-detail{
+    font-size: 13pt;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    margin-bottom: 10pt;
+}
+
+.date-detail{
+    margin: 0;
+    font-weight: 100;
+}
+
+.main-title{
+    font-size: 12pt;
+    margin: 0;
+}
+
+.grid-title{
+    width: 100%;
+}
+
+.grid-movie{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.date-detail,  .countries-detail, .companies-detail, 
+.budget-detail, .vote-detail, .rating-detail, .overview-detail, .tagline-detail{
+    margin: 5px;
+    margin-bottom: 3%;
+}
+
+/* Big tablet to 1200px */
+@media only screen and (max-width: 1200px) {
+
+}
+
+/* Small tablet to big tablet: from 768px to 1023px */
+@media only screen and (max-width: 1023px) {
+    
+}
+
+/* Small phones to small tablets: from 481px to 767px */
+@media only screen and (max-width: 767px) {
+    .poster{
+        height: 90%;
+        width: 90%;
+    }
+
+    .judul-block{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 95%;
+        margin-left: 3%;
+    }
+
+    .tag-block{
+        display:flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 95%;
+        margin-left: 3%;
+    }
+
+    .main-title{
+        font-size: 12pt;
+    }
+}
+
+/* Small phones: from 0 to 480px */
+@media only screen and (max-width: 480px) {
+    .main-title{
+        font-size: 10pt;
+        margin-left: 5%;
+    }
+
+    .date-detail,  .countries-detail, .companies-detail, 
+    .budget-detail, .vote-detail, .rating-detail, .overview-detail, .tagline-detail{
+        margin: 0;
+        margin-left: 5%;
+        margin-bottom: 5%;
+    }
+
+    .overview-detail{
+        text-align: justify;
+        margin-right: 3%;
+    }
+
+    .judul-block{
+        margin-left: 5%;
+        margin-top: 3%;
+    }
+
+    .tag-block{
+        margin-left: 5%;
+    }
+    .detail-block{
+        margin-top: 5%;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .poster-block{
+        width: 100%;
+    }
+
+    .grid-movie{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
