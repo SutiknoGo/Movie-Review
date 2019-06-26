@@ -20,7 +20,7 @@
 
   <!-- =============================================== -->
 
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
   <link rel="stylesheet" href="css/style.css">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -194,7 +194,7 @@
 
         <div class="grid-movie">
           <div class="poster-block" id="poster-block">
-            <!-- <img src="http://image.tmdb.org/t/p/w780<?php echo $movie_id->poster_path ?>" class="poster"> -->
+            <!-- <img src="https://image.tmdb.org/t/p/w780<?php echo $movie_id->poster_path ?>" class="poster"> -->
           </div> <!-- /ui-block-a left grid  -->
 
           <div class="detail-block">
@@ -259,14 +259,14 @@
               id_tv = "TV Not Found!";
             }
 
-            const url = 'http://api.themoviedb.org/3/tv/' + id_tv + '?api_key=' + api_key;
+            const url = 'https://api.themoviedb.org/3/tv/' + id_tv + '?api_key=' + api_key;
 
             fetch(url)
               .then((resp) => resp.json())
               .then(function (data) {
                 console.log(data.poster_path);
                 document.getElementById('poster-block').innerHTML +=
-                  `<img src="http://image.tmdb.org/t/p/w780${data.poster_path}" class="poster">`;
+                  `<img src="https://image.tmdb.org/t/p/w780${data.poster_path}" class="poster">`;
 
                 var genre = '';
                 document.getElementById('judul-detail').innerHTML = data.name;
@@ -324,7 +324,7 @@
             return parent.appendChild(el);
           }
 
-          fetch('http://api.themoviedb.org/3/tv/' + id_tv + '/similar?api_key=73d84d55c014c25019054914bad7b5ad')
+          fetch('https://api.themoviedb.org/3/tv/' + id_tv + '/similar?api_key=73d84d55c014c25019054914bad7b5ad')
             .then((resp) => resp.json())
             .then(function (data) {
               console.log(data);
@@ -344,7 +344,7 @@
                 poster = data.results[i].poster_path;
                 date = new Date(data.results[i].first_air_date);
                 total += '<div id="dalam" > <a onclick="detail(' + id +
-                  ')"> <div id="lala" tabindex="1"> <img src="http://image.tmdb.org/t/p/w500' + poster +
+                  ')"> <div id="lala" tabindex="1"> <img src="https://image.tmdb.org/t/p/w500' + poster +
                   '" alt="Poster Movie" style="width: 100%;"> <p>' + title + ' (' + date.getFullYear() +
                   ')</p> </div> </a> </div>';
               }
@@ -397,9 +397,9 @@
           <div class="ui-bar ui-bar-e" style="height:120px">
             <h3>Latest News</h3>
             <ul>
-              <li class="lines"><a href="http://www.anarieldesign.com/my-store/" title="" rel="nofollow">My Store</a>
+              <li class="lines"><a href="https://www.anarieldesign.com/my-store/" title="" rel="nofollow">My Store</a>
               </li>
-              <li class="lines"><a href="http://www.anarieldesign.com/my-store/" class="" rel="nofollow">Latest News</a>
+              <li class="lines"><a href="https://www.anarieldesign.com/my-store/" class="" rel="nofollow">Latest News</a>
               </li>
               <li class="lines"><a href="https://creativemarket.com/anarieldesign/1356-Special-Bundle" class=""
                   rel="nofollow">Creative Market</a></li>
@@ -420,7 +420,7 @@
       <!-- /grid-b -->
 
       <div id="copyright">
-        <p class="copyright">&copy; Copyright 2012. &quot;Trixy Mobile&quot; by <a href="http://www.anarieldesign.com/"
+        <p class="copyright">&copy; Copyright 2012. &quot;Trixy Mobile&quot; by <a href="https://www.anarieldesign.com/"
             rel="nofollow">Anariel Design</a>. All rights reserved.</p>
       </div>
     </div>
