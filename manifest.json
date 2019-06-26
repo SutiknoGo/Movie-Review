@@ -1,0 +1,26 @@
+{
+  "name": "Movie Review",
+  "short_name": "MR",
+  "icons": [
+    {
+        "src": "images/icon1.png",
+        "type": "image/png",
+        "sizes": "144x144"
+    },
+
+    {
+        "src": "images/MOV1.png",
+        "type": "image/png",
+        "sizes": "464x462"
+    }
+  ],
+  "start_url": "index.php",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fff",
+  "theme_color": "#3f51b5",
+  "description": "The best movie knowledge.",
+  "dir": "ltr",
+  "lang": "en-US"
+}

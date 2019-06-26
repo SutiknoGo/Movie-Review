@@ -1,0 +1,50 @@
+<?php
+include_once "header.php";
+?> 
+<!-- =============================================== -->
+<h1 style="text-align: center;">Search History : </h1>
+
+
+
+<div id=history_div>
+	<script type="text/javascript">
+			// Get the text field that we're going to track
+			var field = document.getElementById("field");
+			var title_arr = [];
+			var type_arr = [];
+
+			// See if we have an title value
+			// (this will only happen if the page is accidentally refreshed)
+			if (localStorage.getItem("title")) {
+			  // Restore the contents of the text field
+			  title_arr = JSON.parse(localStorage.getItem("title"));
+			  type_arr = JSON.parse(localStorage.getItem("type"));
+
+			  var i; 
+			  var text="";
+
+
+			  for (i = 0; i < title_arr.length; i++) { 
+			  	text += "<li><a href='search_click.php?search="+title_arr[i]+"&channel="+type_arr[i]+"'>Title : "+title_arr[i]+" ; Type : "+type_arr[i]+" </a></li>";
+			  }
+			  console.log(title_arr.length);
+			  document.getElementById("history_listview").innerHTML = text;
+
+
+			}else{
+				var text = '<h1 style="text-align: center;">History Empty</h1>';
+				document.getElementById("history_div").innerHTML = text;
+			}
+		</script>
+		<ul data-role="listview" id="history_listview">
+		</ul>
+	</div>
+
+
+
+
+	<!-- =============================================== -->
+
+	<?php
+	include_once "footer.php";
+	?> 

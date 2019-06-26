@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Basic Page Needs ================================================== 
+  ================================================== -->
+
+  <meta charset="utf-8">
+  <title>Movie Review</title>
+
+  <!-- ============================== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="css/jqm-demos.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+  <!-- =============================================== -->
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="description" content="Your No.1 Movie Knowledge">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="author" content="">
+
+
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/app.css" rel="stylesheet" />
+
+  <link rel="manifest" href="manifest.json">
+</head>
+
+
+<body>
+  <div data-role="page"> 
+
+    <!-- header -->
+    <div data-role="header" class="page-header" style="background-color: #3e5fb9; padding-top: 0px;">
+
+      <div class="logo" onclick="window.open('index.html','mywindow');" style=" cursor: pointer; background:url(); padding-bottom: 10px;">
+        <img src="images/logoW.png" style="width: 100%">
+      </div>
+      <p>The Best Movie Knowledge</p>
+      <a href="#leftpanel3"  style="background-color: #3e5fb9; padding-top: 10px; margin-top: 10px;">
+        <i class="fa fa-reorder" id="burger"></i>
+      </a>
+    </div>
+    <!--/header --> 
+
+
+    <!-- social -->
+    <div class="social"> <a href="#"><img src="images/social/facebook.png" alt="facebook"></a> <a href="#"><img src="images/social/twitter.png" alt="twitter"></a> <a href="#"><img src="images/social/google.png" alt="google"></a> <a href="#"><img src="images/social/dribbble.png" alt="dribble"></a> <a href="#"><img src="images/social/pinterest.png" alt="pintarest"></a> </div>
+    <!-- /social -->
+
+    <!-- =============================================== -->
+    <div style="background-color: black;">
+      <form action="search.html" method="GET" >
+        <h2 align="center" style="padding-top: 10px; color: white;">Search for Movies</h2>
+        <div class="cari">
+          <div class="form-group"> 
+            <input type="search" name="search" id="search-basic" value="" placeholder="Search Title...." required/>
+          </div>
+
+          <div id="drop-type">
+            <select name="channel" class="form-control"  id="select-native-1" required>
+              <option class="opt-type" disabled="true" selected="true">Select Type</option>
+              <option class="opt-type" value="movie">Movie</option>
+              <option class="opt-type" value="tv">TV Show</option>
+            </select>
+          </div>
+
+          <div id="btn-cari">
+            <button>Search</button>
+          </div>
+
+          
+
+        </div>
+
+      </form>
+    </div>
+
+
+    <!-- =============================================== -->

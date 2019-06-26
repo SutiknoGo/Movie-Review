@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Basic Page Needs ================================================== 
+  ================================================== -->
+
+  <meta charset="utf-8">
+  <title>Movie Review</title>
+
+  <!-- ============================== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" href="css/jqm-demos.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+  <!-- =============================================== -->
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="description" content="Your No.1 Movie Knowledge">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="author" content="">
+
+
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/app.css" rel="stylesheet" />
+
+  <link rel="manifest" href="manifest.json">
+</head>
+
+
+<body>
+  <div data-role="page">
+
+    <!-- header -->
+    <div data-role="header" class="page-header" style="background-color: #3e5fb9; padding-top: 0px;">
+
+      <div class="logo" onclick="window.open('index.html','mywindow');"
+        style=" cursor: pointer; background:url(); padding-bottom: 10px;">
+        <img src="images/logoW.png" style="width: 100%">
+      </div>
+      <p>The Best Movie Knowledge</p>
+      <a href="#leftpanel3" style="background-color: #3e5fb9; padding-top: 10px; margin-top: 10px;">
+        <i class="fa fa-reorder" id="burger"></i>
+      </a>
+    </div>
+    <!--/header -->
+
+
+    <!-- social -->
+    <div class="social"> <a href="#"><img src="images/social/facebook.png" alt="facebook"></a> <a href="#"><img
+          src="images/social/twitter.png" alt="twitter"></a> <a href="#"><img src="images/social/google.png"
+          alt="google"></a> <a href="#"><img src="images/social/dribbble.png" alt="dribble"></a> <a href="#"><img
+          src="images/social/pinterest.png" alt="pintarest"></a> </div>
+    <!-- /social -->
+
+    <!-- =============================================== -->
+    <div style="background-color: black;">
+      <!-- <form action="search.html" method="GET" > -->
+      <h2 align="center" style="padding-top: 10px; color: white;">Search for Movies</h2>
+      <div class="cari">
+        <div class="form-group">
+          <input type="search" name="search" id="search-basic" value="" placeholder="Search Title...."
+            onkeydown="enter(this)" required />
+        </div>
+
+        <div id="drop-type">
+          <select name="channel" class="form-control" id="select-native-1" required>
+            <option class="opt-type" disabled="true" selected="true">Select Type</option>
+            <option class="opt-type" value="movie">Movie</option>
+            <option class="opt-type" value="tv">TV Show</option>
+          </select>
+        </div>
+
+        <div id="btn-cari">
+          <button onclick="cari()">Search</button>
+        </div>
+
+
+
+      </div>
+
+      <!--      </form> -->
+    </div>
+
+
+    <!-- =============================================== -->
+
+
+
+    <script>
+      function enter(search) {
+        var option = document.getElementById("select-native-1");
+        var search_type = option.options[option.selectedIndex].value;
+        if (event.key === 'Enter') {
+          if (search.value) {
+            if (search_type == "movie" || search_type == "tv") {
+              if (sessionStorage.getItem("search")) {
+                sessionStorage.removeItem("search");
+                sessionStorage.setItem("search", search.value);
+              } else {
+                sessionStorage.setItem("search", search.value);
+              }
+              if (sessionStorage.getItem("search_type")) {
+                sessionStorage.removeItem("search_type");
+                sessionStorage.setItem("search_type", search_type);
+              } else {
+                sessionStorage.setItem("search_type", search_type);
+              }
+              location.href = 'search.html';
+            } else {
+              alert("Please Select Type!");
+            }
+          } else {
+            alert("Title Cannot be Empty!");
+          }
+
+        }
+      }
+
+
+
+      function cari() {
+        // location.href='search.html';
+
+        var option = document.getElementById("select-native-1");
+        var search_type = option.options[option.selectedIndex].value;
+        var search = document.getElementById("search-basic").value;
+        if (search) {
+          if (search_type == "movie" || search_type == "tv") {
+            if (sessionStorage.getItem("search")) {
+              sessionStorage.removeItem("search");
+              sessionStorage.setItem("search", search);
+            } else {
+              sessionStorage.setItem("search", search);
+            }
+            if (sessionStorage.getItem("search_type")) {
+              sessionStorage.removeItem("search_type");
+              sessionStorage.setItem("search_type", search_type);
+            } else {
+              sessionStorage.setItem("search_type", search_type);
+            }
+            location.href = 'search.html';
+          } else {
+            alert("Please Select Type!");
+          }
+        } else {
+          alert("Title Cannot be Empty!");
+        }
+
+      }
+
+      function createNode(element) {
+        return document.createElement(element);
+      }
+
+      function append(parent, el) {
+        return parent.appendChild(el);
+      }
+
+      fetch('http://api.themoviedb.org/3/movie/popular?api_key=73d84d55c014c25019054914bad7b5ad')
+        .then((resp) => resp.json())
+        .then(function (data) {
+          console.log(data);
+          var isi = document.getElementById('isi');
+          var id = "";
+          var title = "";
+          var poster = "";
+          var date;
+          var total = "";
+
+
+          for (var i in data.results) {
+            // j += "<li>" + data.list[i].main.temp + "</li>";
+            // k += "<li>" + data.list[i].main.pressure + "</li>";
+            id = data.results[i].id;
+            title = data.results[i].title;
+            poster = data.results[i].poster_path;
+            date = new Date(data.results[i].release_date);
+            total += '<div id="dalam" > <a onclick="detail(' + id +
+              ')"> <div id="lala" tabindex="1"> <img src="http://image.tmdb.org/t/p/w500' + poster +
+              '" alt="Poster Movie"> <p>' + title + ' (' + date.getFullYear() + ')</p> </div> </a> </div>';
+          }
+          isi.innerHTML = total;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+
+    <script>
+      function detail(id) {
+
+        if (sessionStorage.getItem("id")) {
+          // Restore the contents of the text field
+          sessionStorage.removeItem("id");
+          sessionStorage.setItem("id", id);
+        } else {
+          sessionStorage.setItem("id", id);
+        }
+        location.href = 'movie.html';
+      }
+    </script>
+
+
+    <!-- =============================================== -->
+    <div>
+      <h1 style="margin-left: 40px;">Most Popular</h1>
+      <br>
+
+
+      <div id="isi">
+
+      </div>
+    </div>
+
+    <!-- =============================================== -->
+
+    <!-- =============================================== -->
+
+    <!-- footer -->
+    <div data-role="footer" class="footer">
+      <div data-role="navbar" class="navbar" data-grid="c">
+      </div>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <div class="ui-bar ui-bar-e" style="height:120px">
+            <h3>Latest News</h3>
+            <ul>
+              <li class="lines"><a href="http://www.anarieldesign.com/my-store/" title="" rel="nofollow">My Store</a>
+              </li>
+              <li class="lines"><a href="http://www.anarieldesign.com/my-store/" class="" rel="nofollow">Latest News</a>
+              </li>
+              <li class="lines"><a href="https://creativemarket.com/anarieldesign/1356-Special-Bundle" class=""
+                  rel="nofollow">Creative Market</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ui-block-b">
+          <div class="ui-bar ui-bar-e" style="height:120px">
+            <h3>Archives</h3>
+            <ul>
+              <li class="lines"><a href="#" title="">Latest News</a></li>
+              <li class="lines"><a href="#" class="">Portfolio News</a></li>
+              <li class="lines"><a href="#" class="">Responsive Theme</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /grid-b -->
+
+      <div id="copyright">
+        <p class="copyright">&copy; Copyright 2012. &quot;Trixy Mobile&quot; by <a href="http://www.anarieldesign.com/"
+            rel="nofollow">Anariel Design</a>. All rights reserved.</p>
+      </div>
+    </div>
+    <!-- /footer -->
+
+    <!-- leftpanel3  -->
+    <div data-role="panel" id="leftpanel3" data-position="left" data-display="overlay" data-theme="a"
+      style="background-color: white;">
+      <div class="ui-panel-inner" style="background-color: #3e5fb9; color: white;">
+        Welcome, Guest
+      </div>
+
+      <!-- <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline"></a> -->
+
+      <ul data-role="listview" data-filter="false" data-inset="false">
+        <li><a style="height: 50px; padding-top: 40px; background-color: white;" onclick="location.href='index.html'"><i
+              class="fa fa-home"></i>&nbsp;&nbsp;Home</a></li>
+        <li><a style="height: 50px; padding-top: 40px; background-color: white;" href="History.html"><i
+              class="fa fa-history"></i>&nbsp;&nbsp;History</a></li>
+        <li><a id="download-pwa" style="height: 50px; padding-top: 40px; background-color: white;" href="#"><i
+              class="fa fa-download"></i>&nbsp;&nbsp;Download</a></li>
+        <!-- <li><a style="height: 50px; padding-top: 40px; background-color: white;" href="#"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;Log Out</a></li> -->
+      </ul>
+
+    </div><!-- /leftpanel3 -->
+  </div>
+  <script src="js/pwa.js"></script>
+  <script>
+    function index() {
+      location.href = 'index.html';
+    }
+  </script>
+  <!-- /page -->
+</body>
+
+</html>
