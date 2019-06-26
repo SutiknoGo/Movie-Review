@@ -8,31 +8,31 @@ self.addEventListener('install', function(event) {
       .then(function(cache) {
         console.log('[Service Worker] Precaching App Shell');
         cache.addAll([
-          '/',
-          '/offline.html',
-          '/js/jqm-demos.js',
-          '/js/jquery.js',
-          '/js/jquery.mobile-1.4.5.js',
-          '/js/jquery.mobile-1.4.5.min.js',
-          '/js/jquery.mobile-1.4.5.min.map',
-          '/js/pwa.js',
-          '/js/view-source.js',
+          './',
+          './offline.html',
+          './js/jqm-demos.js',
+          './js/jquery.js',
+          './js/jquery.mobile-1.4.5.js',
+          './js/jquery.mobile-1.4.5.min.js',
+          './js/jquery.mobile-1.4.5.min.map',
+          './js/pwa.js',
+          './js/view-source.js',
 
-          '/css/jquery.mobile-1.4.5.min.css',
-          '/css/jqm-demos.css',
-          '/css/style.css',
-          '/css/responsive.css',
+          './css/jquery.mobile-1.4.5.min.css',
+          './css/jqm-demos.css',
+          './css/style.css',
+          './css/responsive.css',
           'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
           'http://fonts.googleapis.com/css?family=Open+Sans:300,400,700',
 
-          '/images/social/dribbble.png',
-          '/images/social/facebook.png',
-          '/images/social/google.png',
-          '/images/social/pinterest.png',
-          '/images/social/twitter.png',
-          '/images/favicon.ico',
-          '/images/apple-touch-icon.png',
-          '/images/logoW.png'
+          './images/social/dribbble.png',
+          './images/social/facebook.png',
+          './images/social/google.png',
+          './images/social/pinterest.png',
+          './images/social/twitter.png',
+          './images/favicon.ico',
+          './images/apple-touch-icon.png',
+          './images/logoW.png'
         ]);
       })
   )
