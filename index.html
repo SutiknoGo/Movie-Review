@@ -167,7 +167,7 @@
         return parent.appendChild(el);
       }
 
-      fetch('http://api.themoviedb.org/3/movie/popular?api_key=73d84d55c014c25019054914bad7b5ad')
+      fetch('https://api.themoviedb.org/3/movie/popular?api_key=73d84d55c014c25019054914bad7b5ad')
         .then((resp) => resp.json())
         .then(function (data) {
           console.log(data);
